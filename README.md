@@ -1,6 +1,6 @@
 # Tabetabe
 
-[Tabetabe](http://chiaki.vatsul.com:3001) provides a way to organize all of your cooking recipes
+[Tabetabe](http://tabetabe.vatsul.com:3001) provides a way to organize all of your cooking recipes
 
 ## Installing
 
