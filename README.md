@@ -1,4 +1,4 @@
-# Tabetage
+# Tabetabe
 
 [Tabetabe](http://chiaki.vatsul.com:3001) provides a way to organize all of your cooking recipes
 
