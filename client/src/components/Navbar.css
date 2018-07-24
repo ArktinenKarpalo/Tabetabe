@@ -1,0 +1,56 @@
+ul.navbar {
+	margin-top: 0px;
+	padding: 0px;
+	display: block;
+	text-align: center;
+}
+
+li.navbar {
+	display: inline-block;
+}
+
+li.navbar button {
+	margin: auto;
+	width: 200px;
+	height: 50px;
+	border: none;
+	padding: 0px;
+
+	font-size: 24px;
+	color: black;
+	background-color: rgba(0, 0, 255, 0.35);
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+	transition: ease 0.5s;
+}
+
+li.navbar button:hover {
+	transition: ease 0.5s;
+	background-color: rgba(255, 255, 255, 0.35);
+}
+
+li a.navbar {
+	width: 200px;
+	font-size: 24px;
+	color: black;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+}
+
+nav.navbar {
+	margin-left: -25px;
+	margin-right: -25px;
+	padding: 0px;
+}
+
+@media only screen and (max-width: 800px) {
+	li.navbar {
+		display: block;
+		width: 100%;
+	}
+	li.navbar button {
+		width: 100%;
+	}
+}
