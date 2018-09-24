@@ -64,7 +64,11 @@ router.get("/getRecipe/:id", (req, res) => {
 		else
 			res.sendStatus(401);
 	}
-	database.findRecipeByID(req.params.id, callback);
+	err = (err) => {
+		console.log(err);
+		res.status(404).send("Recipe with id: " + req.params.id + " not found!");
+	}
+	database.findRecipeByID(req.params.id, callback, err);
 });
 
 // Copy recipe with id to current user
