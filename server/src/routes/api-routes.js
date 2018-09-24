@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const authentication = require("./../authentication.js");
 const database = require("./../database.js")
+const mongoose = require("mongoose");
 
 // Add a new recipe
 router.post("/recipe", (req, res) => {
@@ -64,6 +65,31 @@ router.get("/getRecipe/:id", (req, res) => {
 			res.sendStatus(401);
 	}
 	database.findRecipeByID(req.params.id, callback);
+});
+
+// Copy recipe with id to current user
+router.get("/shareRecipe/:id", (req, res) => {
+	if(!authentication.isLoggedIn(req)) {
+		return res.status(401).send("Please log in first");
+	}
+	callback = (recipe) => {
+		var newRecipe = recipe;
+		newRecipe.owner = req.user.id;
+		newRecipe._id = mongoose.Types.ObjectId();
+		newRecipe.isNew = true;
+		newRecipe.save((err) => {
+			if(err) {
+				console.log(err);
+				return res.status(500).send("Error while saving the recipe!");
+			}
+			res.status(200).send("Recipe succesfully added to the user!")}
+		);
+	}
+	err = (error) => {
+		res.status(404).send("Recipe with ID: " + req.params.id + " not found!");
+		console.log(error);
+	}
+	database.findRecipeByID(req.params.id, callback, err);
 });
 
 // Returns names and id's of the correspoding user's recipes

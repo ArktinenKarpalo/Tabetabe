@@ -30,8 +30,8 @@ module.exports.findUserByID = (id) => {
 }
 
 // Get a recipe by id
-module.exports.findRecipeByID = (id, callback) => {
-	Recipe.findById(id).then(callback);
+module.exports.findRecipeByID = (id, callback, err) => {
+	Recipe.findById(id).then(callback, err);
 }
 
 // Delete a recipe with id

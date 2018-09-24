@@ -7,6 +7,7 @@ export default class viewRecipe extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
+			recipeId: this.props.recipeId,
 			ingredients: [{name: "", amount: "", unit: ""}],
 			changeView: this.props.changeView
 		}
@@ -76,6 +77,17 @@ export default class viewRecipe extends React.Component {
 		this.setState({edit: true});
 	}
 
+	copyId = () => {
+		const sharingURL = document.location.origin + "/api/shareRecipe/" + this.state.recipeId;
+		const txt = document.createElement("textarea");
+		txt.value = sharingURL;
+		document.body.appendChild(txt);
+		txt.select();
+		document.execCommand("copy");
+		txt.remove();
+		alert("Copied sharing URL to the clipboard!\n" + sharingURL);
+	}
+
 	renderRecipe = () => {
 		if(this.state.recipeData) {
 			return (
@@ -83,6 +95,7 @@ export default class viewRecipe extends React.Component {
 					<div id="imageBox">
 						<h1 id="recipeName">{this.state.recipeData.name}</h1>
 						<button id="editBtn" onClick={() => this.changeView(<EditRecipeView recipeId={this.state.recipeData._id} changeView={this.state.changeView}/>)}>Edit</button>
+						<button id="shareBtn" onClick={() => {this.copyId()}}>Share</button>						
 						<br/>
 						<img className="recipeImage" src={"recipeImages/"+this.getImage()+".jpg"} alt=""></img>
 						<br/>
