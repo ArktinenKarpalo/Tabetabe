@@ -44,16 +44,18 @@ export default class editRecipeView extends React.Component {
 	}
 
 	removeRecipe = () => {
-		const xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = () => {
-			if(xhttp.readyState === 4 && xhttp.status === 200 && xhttp.responseText) {
-				this.changeView(<SearchView  changeView={this.state.changeView} />);
-			} else if(xhttp.status && xhttp.status !== 200) {
-				console.log("Failed to remove recipe, status: " + xhttp.status);
+		if(window.confirm("Delete this recipe?")) {
+			const xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = () => {
+				if(xhttp.readyState === 4 && xhttp.status === 200 && xhttp.responseText) {
+					this.changeView(<SearchView  changeView={this.state.changeView} />);
+				} else if(xhttp.status && xhttp.status !== 200) {
+					console.log("Failed to remove recipe, status: " + xhttp.status);
+				}
 			}
+			xhttp.open("DELETE", "/api/recipe/" + this.props.recipeId, true);
+			xhttp.send();
 		}
-		xhttp.open("DELETE", "/api/recipe/" + this.props.recipeId, true);
-		xhttp.send();
 	}
 
 	submitForm = () => {
