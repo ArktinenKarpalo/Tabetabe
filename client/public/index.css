@@ -9,12 +9,24 @@ body {
 	font-family: 'Open Sans', sans-serif;
 }
 
-#root {
+#main {
 	background-color: rgba(255, 255, 255, 0.2);
 	max-width: 750px;
 	padding: 25px;
 	margin: auto;
 	border-radius: 5px;
-	margin-top: 25px;
 	margin-bottom: 25px;
+}
+
+#logo {
+	display: block;
+	margin: auto;
+	max-width: 750px;
+	padding: 15px;
+}
+
+#logo img {
+	max-height: 100px;
+	display: block;
+	margin: auto;
 }

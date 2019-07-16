@@ -22,8 +22,13 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<div className="App">
-				<Navbar changeView={this.changeView.bind(this)}/>
-				{this.state.view}
+				<div id="logo">
+					<img src="img/logo.png"></img>
+				</div>
+				<div id="main">
+					<Navbar changeView={this.changeView.bind(this)}/>
+					{this.state.view}
+				</div>
 			</div>
 		);
 	}
