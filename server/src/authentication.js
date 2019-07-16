@@ -7,7 +7,7 @@ passport.use(
 	new GoogleStrategy( {
 		clientID: keys.google.clientID,
 		clientSecret: keys.google.clientSecret,
-		callbackURL: "/auth/google/redirect"
+		callbackURL: keys.google.callbackURL
 	}, (accessToken, refreshToken, profile, done) => {
 		console.log("User logged in!");
 		database.findUserByGoogleID(profile.id).then((user) => {

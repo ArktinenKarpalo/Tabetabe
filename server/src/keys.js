@@ -1,12 +1,11 @@
-const fs = require("fs");
-
 module.exports = {
-  // OAuth2 Client Credentials
+	// OAuth2 Client Credentials
 	google: {
 		clientID: "googleID",
-		clientSecret: "googleSecret"
+		clientSecret: "googleSecret",
+		callbackURL: "callbackURL"
 	},
-  // MongoDB connection URI
+	// MongoDB connection URI
 	mongodb: {
 		dbURI: "mongodb://"
 	}
