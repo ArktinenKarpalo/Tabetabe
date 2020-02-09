@@ -1,6 +1,6 @@
 const passport = require("passport");
 const keys = require("./keys.js");
-const GoogleStrategy = require("passport-google-oauth20");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const database = require("./database.js");
 
 passport.use(
@@ -9,7 +9,6 @@ passport.use(
 		clientSecret: keys.google.clientSecret,
 		callbackURL: keys.google.callbackURL
 	}, (accessToken, refreshToken, profile, done) => {
-		console.log("User logged in!");
 		database.findUserByGoogleID(profile.id).then((user) => {
 			if(!user) {
 				database.registerUserGoogleID(profile.displayName, profile.id).then((user) => done(null, user));
